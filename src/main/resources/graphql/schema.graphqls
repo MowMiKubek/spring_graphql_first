@@ -1,0 +1,32 @@
+type Coffee {
+    id: ID!
+    name: String
+    size: Size
+    lovers: [Customer]!
+}
+
+type Customer {
+    id: ID!
+    name: String
+    favCoffee: Coffee
+}
+
+enum Size {
+    SHORT,
+    TALL,
+    GRANDE,
+    VENTI
+}
+
+type Query {
+    findAll: [Coffee]!
+    findById(id: ID): Coffee
+    findAllCustomers: [Customer]!
+    findCustomerById(id: ID): Customer
+}
+
+type Mutation {
+    create(name: String, size: Size): Coffee
+    update(id: ID, name: String, size: Size): Coffee
+    delete(id: ID): Coffee
+}
