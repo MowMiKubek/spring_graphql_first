@@ -8,6 +8,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -26,11 +27,13 @@ public class CoffeeController {
         return coffeeService.findAll();
     }
 
+    @Secured("ROLE_ADMIN")
     @QueryMapping
     public Optional<Coffee> findById(@Argument Long id) {
         return coffeeService.findOne(id);
     }
 
+    @Secured("ROLE_USER")
     @MutationMapping
     public Coffee create(@Argument String name, @Argument Size size) {
         return coffeeService.create(name, size);
