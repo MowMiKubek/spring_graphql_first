@@ -22,29 +22,29 @@ public class CoffeeController {
         this.coffeeService = coffeeService;
     }
 
-    @QueryMapping
+    @QueryMapping(name = "findAllCoffees")
     public List<Coffee> findAll() {
         return coffeeService.findAll();
     }
 
     @Secured("ROLE_ADMIN")
-    @QueryMapping
+    @QueryMapping(name = "findCoffeeById")
     public Optional<Coffee> findById(@Argument Long id) {
         return coffeeService.findOne(id);
     }
 
     @Secured("ROLE_USER")
-    @MutationMapping
+    @MutationMapping(name = "createCoffee")
     public Coffee create(@Argument String name, @Argument Size size) {
         return coffeeService.create(name, size);
     }
 
-    @MutationMapping
+    @MutationMapping(name = "updateCoffee")
     public Coffee update(@Argument Long id, @Argument String name, @Argument Size size) {
         return coffeeService.update(id, name, size);
     }
 
-    @MutationMapping
+    @MutationMapping(name = "deleteCoffee")
     public Coffee delete(@Argument Long id) {
         return coffeeService.delete(id);
     }

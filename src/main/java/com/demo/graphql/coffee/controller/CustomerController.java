@@ -19,13 +19,13 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @QueryMapping
-    public List<Customer> findAllCustomers() {
+    @QueryMapping(name = "findAllCustomers")
+    public List<Customer> findAll() {
         return customerService.getCustomers();
     }
 
-    @QueryMapping
-    public Optional<Customer> findCustomerById(@Argument Long id) {
+    @QueryMapping(name = "findCustomerById")
+    public Optional<Customer> findById(@Argument Long id) {
         return customerService.getCustomerById(id);
     }
 

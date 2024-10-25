@@ -19,14 +19,14 @@ enum Size {
 }
 
 type Query {
-    findAll: [Coffee]!
-    findById(id: ID): Coffee
+    findAllCoffees: [Coffee]!
+    findCoffeeById(id: ID): Coffee
     findAllCustomers: [Customer]!
     findCustomerById(id: ID): Customer
 }
 
 type Mutation {
-    create(name: String, size: Size): Coffee
-    update(id: ID, name: String, size: Size): Coffee
-    delete(id: ID): Coffee
+    createCoffee(name: String, size: Size): Coffee
+    updateCoffee(id: ID, name: String, size: Size): Coffee
+    deleteCoffee(id: ID): Coffee
 }
